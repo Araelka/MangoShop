@@ -1,0 +1,20 @@
+{
+    "name": "alekhin/mango-shop",
+    "autoload": {
+        "psr-4": {
+            "Config\\": "config/",
+            "DB\\": "database/",
+            "DB\\Migrations\\": "database/migrations",
+            "DB\\Seeds\\": "database/seed",
+            "App\\Models\\": "app/Models",
+            "App\\Controllers\\": "app/Controllers"
+        }
+    },
+    "authors": [
+        {
+            "name": "Araelka",
+            "email": "RoseRedOwl@gmail.com"
+        }
+    ],
+    "require": {}
+}
