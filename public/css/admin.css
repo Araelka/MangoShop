@@ -1,0 +1,284 @@
+/* === Стили админ-панели в мистическом стиле === */
+
+/* Убираем абсолютное позиционирование — оно ломает layout */
+.container {
+    position: static;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.admin-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fdf8f5; /* тёплый пергамент */
+    border: 1px solid #e0c9b8;
+    border-radius: 12px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Декоративная рамка — как пергамент в деревянной раме */
+.admin-container::before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid #d7ccc8;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #8d6e63; /* тёплый коричневый */
+}
+
+.admin-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2rem;
+    color: #5d4037;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+}
+
+/* === Табы === */
+.table-tabs-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.table-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.table-tab {
+    padding: 10px 20px;
+    background: #f5efe7;
+    border: 1px solid #e0c9b8;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    color: #5d4037;
+}
+
+.table-tab.active {
+    background: #8d6e63;
+    color: #f9f0e0;
+    border-color: #7d5e53;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table-tab:hover:not(.active) {
+    background: #e8e0d5;
+    transform: translateY(-1px);
+}
+
+/* === Таблица пользователей === */
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fffefc;
+    border: 1px solid #e0c9b8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e8e0d5;
+}
+
+.admin-table th {
+    background: #8d6e63;
+    color: #f9f0e0;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1.05rem;
+}
+
+.admin-table tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tr:nth-child(even) {
+    background: #faf6f0;
+}
+
+.admin-table tr:hover {
+    background: #f5efe7 !important;
+    transition: background 0.2s ease;
+}
+
+/* === Бейджи ролей === */
+.role-badge {
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    font-family: 'Cormorant Garamond', serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-1 { /* Админ */
+    background: #a52a2a;
+    color: #fffefc;
+}
+
+.role-2 { /* Редактор */
+    background: #8d6e63;
+    color: #f9f0e0;
+}
+
+.role-3 { /* Пользователь */
+    background: #6d4c41;
+    color: #f9f0e0;
+}
+
+/* === Кнопки действий === */
+.action-btn {
+    text-decoration: none;
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.edit-btn {
+    background: #d4af37; /* золото */
+    color: #3e2723;
+}
+
+.delete-btn {
+    background: #a52a2a; /* бордовый */
+    color: #f9f0e0;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.back-link {
+    color: #8d6e63;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+}
+.back-link:hover {
+    color: #d4af37;
+    text-decoration: underline;
+}
+
+.edit-user-form {
+    max-width: 600px;
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #5d4037;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d7ccc8;
+    border-radius: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    background: #fffefc;
+}
+
+.form-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.cancel-btn {
+    padding: 10px 20px;
+    background: #e0c9b8;
+    color: #5d4037;
+    text-decoration: none;
+    border-radius: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    transition: background 0.3s ease;
+}
+
+.cancel-btn:hover {
+    background: #d7ccc8;
+}
+
+
+/* === Адаптивность === */
+@media (max-width: 768px) {
+    .admin-container {
+        padding: 20px;
+        margin: 20px 10px;
+    }
+
+    .admin-title {
+        font-size: 1.8rem;
+    }
+
+    .table-tabs-menu {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-table {
+        font-size: 0.9rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 10px 8px;
+    }
+
+    .action-btn {
+        text-decoration: none;
+        padding: 5px 10px;
+        font-size: 0.85rem;
+    }
+}

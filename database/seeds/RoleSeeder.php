@@ -17,6 +17,7 @@ class RoleSeeder {
 
         $roles = [
             ['name' => 'admin', 'description' => 'Администратор'],
+            ['name' => 'editor', 'description' => 'Редактор'],
             ['name' => 'user', 'description' => 'Пользователь']
         ];
 

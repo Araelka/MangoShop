@@ -10,6 +10,7 @@ return array(
     'DB\\Migrations\\' => array($baseDir . '/database/migrations'),
     'DB\\' => array($baseDir . '/database'),
     'Config\\' => array($baseDir . '/config'),
+    'App\\Validators\\' => array($baseDir . '/app/Validators'),
     'App\\Models\\' => array($baseDir . '/app/Models'),
     'App\\Controllers\\' => array($baseDir . '/app/Controllers'),
 );

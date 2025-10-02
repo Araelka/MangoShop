@@ -3,7 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Auth;
-use App\Models\CsrfToket;
+use App\Models\CsrfToken;
+use App\Models\User;
 
 class AuthController {
 
@@ -12,9 +13,12 @@ class AuthController {
 
     public function __construct() {
         $this->auth = new Auth();
-        $this->csrfToken = new CsrfToket();
+        $this->csrfToken = new CsrfToken();
     }
 
+    /**
+     * Отображает форму авторизации
+     */
     public function showLoginForm() {
 
         if ($this->auth->check()) {
@@ -26,6 +30,9 @@ class AuthController {
         require __DIR__ . '/../Views/auth/login.php';
     }
 
+    /**
+     * Авторизирует пользователя
+     */
     public function login () {
 
         if ($this->auth->check()) {
@@ -48,17 +55,26 @@ class AuthController {
         $username = trim($_POST['username']);
         $password = $_POST['password'] ?? '';
 
+        $old = [
+                'username' => $username,
+                'password' => $password
+            ];
+
         if (empty($username) || empty($password)) {
+
             $error = 'Поле "Имя пользователя" или "Пароль" не заполнено';
             require __DIR__ . '/../Views/auth/login.php';
             return;
         }
 
-        $user = $this->auth->attempt($username, $password);
+        $userId = $this->auth->attempt($username, $password);
 
-        if ($user) {
-            $this->auth->login($user);
-            require __DIR__ . '/../Views/index.php';
+        if ($userId) {
+            $this->auth->login($userId);
+            $user = new User();
+            $user = $user->findByID($userId);
+            header('Location: /');
+            exit;
         } else {
             $error = 'Неверное "Имя пользователя" или "Пароль"';
             require __DIR__ . '/../Views/auth/login.php';
@@ -67,6 +83,9 @@ class AuthController {
         
     }
 
+    /**
+     * Осуществляет выход пользователя из системы
+     */
     public function logout(){
         $this->auth->logout();
         header('Location: /login');

@@ -19,6 +19,7 @@ class ComposerStaticInit42bfde85c247ff464e296341ad663d50
         ),
         'A' => 
         array (
+            'App\\Validators\\' => 15,
             'App\\Models\\' => 11,
             'App\\Controllers\\' => 16,
         ),
@@ -40,6 +41,10 @@ class ComposerStaticInit42bfde85c247ff464e296341ad663d50
         'Config\\' => 
         array (
             0 => __DIR__ . '/../..' . '/config',
+        ),
+        'App\\Validators\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app/Validators',
         ),
         'App\\Models\\' => 
         array (

@@ -4,10 +4,11 @@
         "psr-4": {
             "Config\\": "config/",
             "DB\\": "database/",
-            "DB\\Migrations\\": "database/migrations",
-            "DB\\Seeds\\": "database/seed",
-            "App\\Models\\": "app/Models",
-            "App\\Controllers\\": "app/Controllers"
+            "DB\\Migrations\\": "database/migrations/",
+            "DB\\Seeds\\": "database/seed/",
+            "App\\Models\\": "app/Models/",
+            "App\\Controllers\\": "app/Controllers/",
+            "App\\Validators\\": "app/Validators"
         }
     },
     "authors": [

@@ -16,16 +16,16 @@ class UserSeeder {
         echo "Запуск UserSeeder...\n";
 
         $user = [
-            'login' => 'admin', 
+            'username' => 'admin', 
             'email' => 'admin@ex.ex',
             'password' => password_hash('admin', PASSWORD_DEFAULT), 
             'role_id' => 1,
         ];
 
         try {
-            $sql = $this->pdo->prepare("INSERT IGNORE INTO users (login, email, password, role_id) VALUES (?, ?, ?, ?)");
+            $sql = $this->pdo->prepare("INSERT IGNORE INTO users (username, email, password, role_id) VALUES (?, ?, ?, ?)");
 
-            $sql->execute([$user['login'], $user['email'], $user['password'], $user['role_id']]);
+            $sql->execute([$user['username'], $user['email'], $user['password'], $user['role_id']]);
         } catch (PDOException $e) {
             echo "Ошибка при выполнении UserSeeder: " . $e->getMessage() . "\n";
         }

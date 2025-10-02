@@ -8,8 +8,8 @@ class CreateUsersTable extends Migration {
     public function up(){
         $this->createTable('users', [
             'id INT PRIMARY KEY AUTO_INCREMENT',
-            'login VARCHAR(100) NOT NULL UNIQUE',
-            'email VARCHAR(100) NOT NULL UNIQUE',
+            'username VARCHAR(255) NOT NULL UNIQUE',
+            'email VARCHAR(255) NOT NULL UNIQUE',
             'password VARCHAR(255) NOT NULL',
             'role_id INT',
             'created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP',

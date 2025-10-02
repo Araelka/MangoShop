@@ -17,9 +17,8 @@ class Auth {
      * @param string $password Пароль пользователя
      */
     public function attempt ($username, $password) {
-        $sql = $this->pdo->prepare("SELECT id, password FROM users WHERE login = ? OR email = ?");
-        $sql->execute([$username, $username]);
-        $user = $sql->fetch();
+        $user = new User();
+        $user = $user->findByUserName($username);
 
         if ($user && password_verify($password, $user['password'])) {
             return $user['id'];
@@ -48,7 +47,7 @@ class Auth {
             session_start();
         }
 
-        return isset($_SESSION['user_id']);
+        return isset($_SESSION['user_id']); 
     }
 
     /**
@@ -69,7 +68,7 @@ class Auth {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        
+
         $_SESSION = [];
         session_destroy();
     }

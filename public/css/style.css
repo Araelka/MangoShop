@@ -1,4 +1,4 @@
-/* Общие стили */
+/* === Сброс и базовые настройки === */
 * {
     margin: 0;
     padding: 0;
@@ -6,29 +6,58 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f8f4f9;
-    color: #333;
+    font-family: 'Cormorant Garamond', serif; /* элегантный старинный шрифт */
+    background-color: #f8f3e9; /* тёплый пергамент */
+    background-image:
+        radial-gradient(circle at 10% 20%, rgba(139, 69, 19, 0.03) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(101, 67, 33, 0.03) 0%, transparent 20%);
+    color: #3e2723; /* тёмно-коричневый */
     line-height: 1.6;
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* Текстура пергамента */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d7ccc8' fill-opacity='0.2' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* === Контейнер === */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.error {
-    color: #e74c3c;
-    font-size: 14px;
+/* === Ошибки === */
+.error,
+.register-error {
+    background: #fdf8f5;
+    border: 1px solid #e0c9b8;
+    color: #a52a2a;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 8px 0;
+    font-size: 0.95rem;
     text-align: center;
 }
 
-/* Шапка сайта */
+/* === Шапка сайта === */
 .header {
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    background: linear-gradient(to bottom, #5d4037, #4e342e);
     padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid #d4af37;
+    position: relative;
 }
 
 .header .container {
@@ -38,119 +67,199 @@ body {
 }
 
 .logo {
-    font-size: 2rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.4rem;
     font-weight: bold;
-    color: white;
+    color: #f9f0e0;
     text-decoration: none;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
 }
 
-.nav {
-    display: flex;
-    gap: 20px;
-}
-
-.nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(255,255,255,0.2);
+.logo:hover {
+    color: #ffd700;
+    transition: color 0.3s ease;
 }
 
 .auth-cart {
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 
 .auth-link,
 .cart-link {
-    color: white;
+    color: #f9f0e0;
     text-decoration: none;
     font-weight: 500;
     padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .auth-link:hover,
 .cart-link:hover {
-    background-color: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd700;
 }
 
-/* Основное содержимое */
+.cart-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    vertical-align: middle;
+    color: #f9f0e0;
+    transition: color 0.3s ease;
+}
+
+.auth-cart a:hover .cart-icon {
+    color: #ffd700;
+}
+
+/* --- Выпадающее меню пользователя --- */
+.user-menu-container {
+    position: relative;
+}
+
+.user-menu-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #f9f0e0;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1.6;
+    transition: background 0.3s ease;
+}
+
+.user-menu-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffd700;
+}
+
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 5px;
+    background: #f8f3e9;
+    border: 1px solid #e0c9b8;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    min-width: 160px;
+    z-index: 1000;
+    padding: 8px 0;
+}
+
+.user-menu-container:hover .user-dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    color: #3e2723;
+    text-decoration: none;
+    font-family: 'Cormorant Garamond', serif;
+    transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+    background: #e8e0d5;
+    color: #5d4037;
+}
+
+/* === Основное содержимое === */
 .main-content {
     padding: 40px 0;
+    min-height: 80vh;
 }
 
 .page-title {
     text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    color: #5d4037;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-    color: #6e45e2;
-    font-size: 2.5rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    letter-spacing: 1px;
 }
 
-/* Стили для форм авторизации и регистрации */
+/* === Формы авторизации и регистрации === */
 .auth-form-container {
-    max-width: 400px;
+    max-width: 420px;
     margin: 0 auto;
-    background: white;
+    background: #fdf8f5;
     padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0c9b8;
+    position: relative;
 }
 
 .auth-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 6px;
 }
 
 .form-group label {
-    font-weight: bold;
-    color: #444;
+    font-weight: 600;
+    color: #5d4037;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
 }
 
 .form-group input {
     padding: 12px;
-    border: 2px solid #ddd;
-    border-radius: 5px;
+    border: 1px solid #d7ccc8;
+    border-radius: 6px;
     font-size: 1rem;
+    background: #fffefc;
+    font-family: 'Cormorant Garamond', serif;
     transition: border-color 0.3s ease;
 }
 
 .form-group input:focus {
     outline: none;
-    border-color: #6e45e2;
-    box-shadow: 0 0 0 3px rgba(110, 69, 226, 0.1);
+    border-color: #d4af37;
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
 }
 
 .submit-btn {
     padding: 12px;
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    color: white;
+    background: linear-gradient(to bottom, #8d6e63, #6d4c41);
+    color: #f9f0e0;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
     font-size: 1.1rem;
-    transition: background 0.3s ease;
+    font-family: 'Dancing Script', cursive;
+    letter-spacing: 1px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
 
 .submit-btn:hover {
-    background: linear-gradient(135deg, #5a3bbd, #6abecb);
+    background: linear-gradient(to bottom, #7d5e53, #5d3c31);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
 }
 
 .auth-links {
@@ -158,45 +267,42 @@ body {
     text-align: center;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .auth-links a {
-    color: #6e45e2;
+    color: #8d6e63;
     text-decoration: none;
     font-weight: 500;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .auth-links a:hover {
+    color: #d4af37;
     text-decoration: underline;
 }
 
-/* Стили каталога товаров (остаются без изменений) */
+/* === Каталог товаров === */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
     margin-top: 20px;
 }
 
 .product-card {
-    background: white;
-    border-radius: 10px;
+    background: #fdf8f5;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0c9b8;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.product-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-bottom: 2px solid #6e45e2;
+    transform: translateY(-6px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .product-info {
@@ -204,63 +310,78 @@ body {
 }
 
 .product-name {
-    font-size: 1.3rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.6rem;
     margin-bottom: 10px;
-    color: #444;
+    color: #5d4037;
 }
 
 .product-desc {
-    color: #666;
+    color: #6d4c41;
     margin-bottom: 15px;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    line-height: 1.6;
 }
 
 .product-price {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    color: #d9534f;
+    color: #a52a2a;
     margin-bottom: 15px;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .add-to-cart {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(135deg, #6e45e2, #88d3ce);
-    color: white;
+    background: linear-gradient(to bottom, #8d6e63, #6d4c41);
+    color: #f9f0e0;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s ease;
+    font-family: 'Dancing Script', cursive;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .add-to-cart:hover {
-    background: linear-gradient(135deg, #5a3bbd, #6abecb);
+    background: linear-gradient(to bottom, #7d5e53, #5d3c31);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Футер */
+/* === Футер === */
 .footer {
-    background: #333;
-    color: white;
+    background: #4e342e;
+    color: #f9f0e0;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 40px;
+    padding: 25px 0;
+    margin-top: 50px;
+    border-top: 2px solid #d4af37;
 }
 
 .footer p {
-    font-size: 0.9rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
 }
 
-/* Адаптивность */
+.footer a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* === Адаптивность === */
 @media (max-width: 768px) {
     .header .container {
         flex-direction: column;
         gap: 15px;
-    }
-
-    .nav {
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     .auth-cart {
@@ -268,15 +389,18 @@ body {
     }
 
     .page-title {
-        font-size: 2rem;
+        font-size: 2.4rem;
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 
     .auth-form-container {
         padding: 20px;
-        width: 90%;
     }
 }
+
+
+

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-class CsrfToket {
+class CsrfToken {
     public function generateCsrfToken() {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
