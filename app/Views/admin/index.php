@@ -103,13 +103,14 @@
                     <?php endfor ?>
                 </div>
 
-                <div>
-                    <div>
-                        На странице:
-                        <?php foreach([5, 10, 20, 50, 100] as $lim): ?>
-                            <a href="?sort=<?= $sortField ?>&order=<?= $sortOrder ?>&limit=<?= $lim ?>"><?= $lim ?></a>
-                        <?php endforeach ?>
-                    </div>
+                <div class="pagination-controls">
+                    <span>На странице:</span>
+                    <?php foreach([5, 10, 20, 50, 100] as $lim): ?>
+                        <a href="?sort=<?= htmlspecialchars($sortField) ?>&order=<?= htmlspecialchars($sortOrder) ?>&limit=<?= $lim ?>&page=1" 
+                        class="limit-option <?= $lim == $limit ? 'active' : '' ?>">
+                            <?= $lim ?>
+                        </a>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>

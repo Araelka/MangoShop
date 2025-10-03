@@ -267,6 +267,7 @@
     gap: 8px;
     padding-top: 20px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .page {
@@ -302,6 +303,58 @@
     border-color: #7d5e53;
     box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
     animation: candle-flicker 4s infinite ease-in-out;
+}
+
+/* === Блок выбора количества на странице === */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+    padding: 12px 0;
+    border-top: 1px dashed #e0c9b8;
+    font-family: 'Cormorant Garamond', serif;
+    color: #6d4c41;
+    font-size: 0.95rem;
+    align-items: center;
+}
+
+.pagination-controls label {
+    font-weight: 600;
+    margin-right: 8px;
+    align-self: center;
+}
+
+.limit-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 10px;
+    background: #f5efe7;
+    color: #5d4037;
+    text-decoration: none;
+    border: 1px solid #e0c9b8;
+    border-radius: 6px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+.limit-option:hover {
+    background: #e8e0d5;
+    color: #8d6e63;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.limit-option.active {
+    background: #8d6e63;
+    color: #f9f0e0;
+    border-color: #7d5e53;
+    font-weight: bold;
 }
 
 
