@@ -68,6 +68,7 @@
 }
 
 .table-tab {
+    text-decoration: none;
     padding: 10px 20px;
     background: #f5efe7;
     border: 1px solid #e0c9b8;
@@ -107,6 +108,11 @@
     padding: 14px 12px;
     text-align: left;
     border-bottom: 1px solid #e8e0d5;
+}
+
+.admin-table th a {
+    text-decoration: none;
+    color: #f9f0e0;
 }
 
 .admin-table th {
@@ -160,6 +166,12 @@
 }
 
 /* === Кнопки действий === */
+.action-btn-td {
+    display: flex;
+    align-items: stretch;
+    gap: 5px;
+}
+
 .action-btn {
     text-decoration: none;
     padding: 6px 12px;
@@ -203,7 +215,6 @@
 }
 
 .edit-user-form {
-    max-width: 600px;
     margin-top: 20px;
 }
 
@@ -248,6 +259,49 @@
 
 .cancel-btn:hover {
     background: #d7ccc8;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 20px;
+    flex-wrap: wrap;
+}
+
+.page {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+
+    background: #f5efe7;
+    color: #5d4037;
+    border: 1px solid #e0c9b8;
+}
+
+.page:hover {
+    background: #e8e0d5;
+    color: #8d6e63;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.page.active {
+    background: #8d6e63;
+    color: #f9f0e0;
+    border-color: #7d5e53;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+    animation: candle-flicker 4s infinite ease-in-out;
 }
 
 

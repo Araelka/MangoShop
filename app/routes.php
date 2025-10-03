@@ -41,18 +41,80 @@ elseif ($url === '/register') {
 } 
 
 elseif ($url === '/admin') {
+
     $user = new User();
     $auth = new Auth();
 
-    if ($user->isAdmin($user->findByID($auth->id()))) {
-        $controller = new AdminController();
-        $controller->index();
-    } else {
+    $userId = $auth->id();
+
+    if (!$auth->check() || !$user->isAdmin($user->findByID($userId))) {
         header('Location: /');
         exit;
     }
 
-    
+    $controller = new AdminController();
+    $controller->index();
+
+}
+
+elseif ($url === "/admin/users/create") {
+    $auth = new Auth();
+    $user = new User();
+
+    $userId = $auth->id();
+
+    if (!$auth->check() || !$user->isAdmin($user->findByID($userId))) {
+        header('Location: /');
+        exit;
+    }
+
+    $controller = new AdminController();
+
+    if ($method === 'POST') {
+        $controller->userCreate();
+    } else {
+        $controller->showUserCreateForm();
+    }
+}
+
+elseif (preg_match('#^/admin/users/(\d+)/edit$#', $url, $matches)) {
+
+    $auth = new Auth();
+    $user = new User();
+
+    $userId = $auth->id();
+
+    if (!$auth->check() || !$user->isAdmin($user->findByID($userId))) {
+        header('Location: /');
+        exit;
+    }
+
+    $userId = $matches[1];
+
+    $controller = new AdminController();
+
+    if ($method === 'POST') {
+        $controller->userUpdate($userId);
+    } else {
+        $controller->showUserEditForm($userId);
+    }
+}
+
+elseif (preg_match('#^/admin/users/(\d+)/delete$#', $url, $matches) && $method === 'POST') {
+    $auth = new Auth();
+    $user = new User();
+
+    $userId = $auth->id();
+
+    if (!$auth->check() || !$user->isAdmin($user->findByID($userId))) {
+        header('Location: /');
+        exit;
+    }
+
+    $userId = $matches[1];
+
+    $controller = new AdminController();
+    $controller->delete($userId);
 }
 
 else {

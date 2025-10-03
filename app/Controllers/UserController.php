@@ -79,6 +79,5 @@ class UserController {
             require __DIR__ . '/../Views/auth/register.php';
             return;
         }
-
     }
 }
