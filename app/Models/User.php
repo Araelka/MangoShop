@@ -6,6 +6,10 @@ use DB\Database;
 use PDO;
 use PDOException;
 
+/**
+ * Модель для работы с таблицей `users`.
+ * Содержит методы для CRUD-операций и проверки ролей.
+ */
 class User {
     private $pdo;
 
@@ -20,6 +24,10 @@ class User {
         $this->pdo = Database::getConnection();
     }
 
+    /**
+     * Получает всех пользователей с присоединённой ролью.
+     * Поддерживает сортировку, лимит и смещение (для пагинации).
+     */
     public function findALL($sortField = 'id', $sortOrder = 'ASC', $limit = null, $offset = null){
 
         $sortFields = ['id', 'username', 'email', 'role_id', 'created_at',];
@@ -54,7 +62,7 @@ class User {
     }
 
     /**
-     * Находит пользователя по имени пользователя
+     * Находит пользователя по логину или email.
      */
     public function findByUserName ($username) {
         $sql = $this->pdo->prepare("SELECT * FROM users WHERE username = ? OR email = ?");
@@ -64,7 +72,7 @@ class User {
     }
 
     /**
-     * Находит пользователя по ID
+     * Находит пользователя по ID.
      */
     public function findByID ($userId) {
         $sql = $this->pdo->prepare("SELECT * FROM users WHERE id = ?");
@@ -73,6 +81,9 @@ class User {
         return $sql->fetch();
     }
 
+    /**
+     * Получает все доступные роли из таблицы `roles`.
+     */
     public function findAllRoles() {
         $sql = $this->pdo->prepare("SELECT * FROM roles");
         $sql->execute();
@@ -80,7 +91,7 @@ class User {
     }
 
     /**
-     * Проверяет, существует ли пользователь с таким логином
+     * Проверяет существование пользователя по логину.
      */
     public function existsByUserName ($username) {
         $sql = $this->pdo->prepare("SELECT * FROM users WHERE username = ? LIMIT 1");
@@ -89,7 +100,7 @@ class User {
     }
 
     /**
-     * Проверяет, существует ли пользователь с таким email
+     * Проверяет существование пользователя по email.
      */
     public function existsByEmail ($email) {
         $sql = $this->pdo->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
@@ -98,21 +109,21 @@ class User {
     }
 
     /**
-     * Проверяет, является ли пользователь администратором
+     * Проверяет, является ли пользователь администратором (role_id = 1).
      */
     public function isAdmin($user) {
         return is_array($user) && isset($user['role_id']) && $user['role_id'] == 1;
     }
 
     /**
-     * Проверяет, является ли пользователь редактором
+     * Проверяет, является ли пользователь редактором.
      */
     public function isEditor($user) {
         return is_array($user) && isset($user['role_id']) && ($user['role_id'] == 2 || $user['role_id'] == 1 );
     }
 
     /**
-     * Создаёт нового пользователя
+     * Создаёт нового пользователя с хешированным паролем.
      */
     public function create($userdata){
 
@@ -145,6 +156,9 @@ class User {
         }
     }
 
+    /**
+     * Обновляет данные пользователя. Пароль обновляется только если передан.
+     */
     public function update($userdata) {
         try {
             $acceptableFields = ['username', 'email', 'role_id'];
@@ -178,6 +192,9 @@ class User {
         }
     }
 
+    /**
+     * Удаляет пользователя по ID.
+     */
     public function delete ($userId) {
         try {
             $sql = $this->pdo->prepare("DELETE FROM users WHERE id = ?");
@@ -189,6 +206,9 @@ class User {
         }
     }
 
+    /**
+     * Возвращает общее количество пользователей.
+     */
     public function count() {
         $sql = $this->pdo->prepare("SELECT COUNT(*) as count FROM users");
         $sql->execute();

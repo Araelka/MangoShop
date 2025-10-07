@@ -7,6 +7,10 @@ use App\Models\CsrfToken;
 use App\Models\User;
 use App\Validators\UserValidator;
 
+/**
+ * Контроллер для регистрации новых пользователей.
+ * Доступен только неавторизованным пользователям.
+ */
 class UserController {
     private $csrfToken;
 
@@ -18,6 +22,9 @@ class UserController {
         
     }
 
+    /**
+     * Отображает форму регистрации.
+     */
     public function showCreateForm(){
         if ($this->auth->check()) {
             header('Location: /');
@@ -28,6 +35,10 @@ class UserController {
         require __DIR__ . '/../Views/auth/register.php';
     }
 
+     /**
+     * Обрабатывает регистрацию нового пользователя.
+     * Валидирует данные, хеширует пароль и создаёт запись в БД.
+     */
     public function create(){
         if ($this->auth->check()) {
             header('Location: /');

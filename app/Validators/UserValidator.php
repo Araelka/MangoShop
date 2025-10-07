@@ -4,6 +4,10 @@ namespace App\Validators;
 
 use App\Models\User;
 
+/**
+ * Валидатор данных пользователя при создании и обновлении.
+ * Проверяет формат, уникальность и соответствие правилам.
+ */
 class UserValidator {
     private $fields = [
         'username' => 'Имя пользователя',
@@ -15,6 +19,9 @@ class UserValidator {
 
     private $errors = [];
 
+    /**
+     * Полная валидация при регистрации (все поля обязательны).
+     */
     public function validate($userdata){
 
         $user = new User();
@@ -77,6 +84,10 @@ class UserValidator {
         return $this->errors;
     }
 
+    /**
+     * Валидация при обновлении (учитывает, что некоторые поля могут не меняться,
+     * и проверяет уникальность с учётом текущего ID).
+     */
     public function updateValidate($userdata){
 
         $user = new User();

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Сидеры для начального заполнения БД:
+ * - RoleSeeder: создаёт роли (admin, editor, user)
+ * - UserSeeder: создаёт учётную запись администратора (логин: admin, пароль: admin)
+ */
+
 require_once __DIR__ . '/../../vendor/autoload.php';
 
 use DB\Seeds\RoleSeeder;

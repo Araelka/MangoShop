@@ -4,6 +4,9 @@ namespace App\Models;
 
 use DB\Database;
 
+/**
+ * Модель для управления аутентификацией через сессии.
+ */
 class Auth {
     private $pdo;
 
@@ -12,9 +15,7 @@ class Auth {
     }
 
     /**
-     * Проверяет логин и пароль, возвращает ID пользователя или false
-     * @param string $username Имя пользователя или электронная почта
-     * @param string $password Пароль пользователя
+     * Проверяет учётные данные и возвращает ID пользователя при успехе.
      */
     public function attempt ($username, $password) {
         $user = new User();
@@ -28,8 +29,7 @@ class Auth {
     }
 
     /**
-     * Авторизует пользователя по ID
-     * @param int $userId ID пользователя
+     * Сохраняет ID пользователя в сессии.
      */
     public function login ($userId) {
         if (session_status() === PHP_SESSION_NONE) {
@@ -40,7 +40,7 @@ class Auth {
     }
 
     /**
-     *  Проверяет, авторизован ли пользователь
+     * Проверяет наличие активной сессии.
      */
     public function check() {
         if (session_status() === PHP_SESSION_NONE) {
@@ -51,7 +51,7 @@ class Auth {
     }
 
     /**
-     * Возвращает ID текущего пользователя или null
+     * Возвращает ID текущего пользователя из сессии.
      */
     public function id() {
         if (session_status() === PHP_SESSION_NONE) {
@@ -62,7 +62,7 @@ class Auth {
     }
 
     /**
-     * Завершает сессию (выход)
+     * Уничтожает сессию (выход из системы).
      */
     public function logout() {
         if (session_status() === PHP_SESSION_NONE) {

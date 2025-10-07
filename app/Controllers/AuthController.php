@@ -6,6 +6,9 @@ use App\Models\Auth;
 use App\Models\CsrfToken;
 use App\Models\User;
 
+/**
+ * Контроллер для авторизации и выхода из системы.
+ */
 class AuthController {
 
     private $auth;
@@ -17,7 +20,8 @@ class AuthController {
     }
 
     /**
-     * Отображает форму авторизации
+     * Отображает форму входа.
+     * Перенаправляет авторизованных пользователей на главную.
      */
     public function showLoginForm() {
 
@@ -31,7 +35,8 @@ class AuthController {
     }
 
     /**
-     * Авторизирует пользователя
+     * Обрабатывает попытку входа.
+     * Проверяет CSRF, валидность логина/пароля и создаёт сессию.
      */
     public function login () {
 
@@ -83,8 +88,8 @@ class AuthController {
         
     }
 
-    /**
-     * Осуществляет выход пользователя из системы
+     /**
+     * Завершает сессию и перенаправляет на форму входа.
      */
     public function logout(){
         $this->auth->logout();

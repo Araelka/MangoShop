@@ -7,6 +7,10 @@ use App\Models\CsrfToken;
 use App\Models\User;
 use App\Validators\UserValidator;
 
+/**
+ * Контроллер для управления пользователями в админ-панели.
+ * Доступ только для авторизованных пользователей с ролью "администратор" (role_id = 1).
+ */
 class AdminController {
     private $csrfToken;
 
@@ -17,6 +21,10 @@ class AdminController {
         $this->csrfToken = new CsrfToken();
     }
 
+    /**
+     * Отображает список всех пользователей с пагинацией и сортировкой.
+     * Проверяет права доступа и генерирует CSRF-токен для форм.
+     */
     public function index(){
 
         $user = new User();
@@ -53,6 +61,10 @@ class AdminController {
         require __DIR__ . '/../Views/admin/index.php';
     }
 
+    /**
+     * Отображает форму редактирования пользователя по ID.
+     * Защищает от изменения суперпользователя (ID = 1) обычными админами.
+     */
     public function showUserEditForm ($userId) {
 
         $userModel = new User();
@@ -75,6 +87,11 @@ class AdminController {
         }
     }
 
+
+    /**
+     * Обрабатывает обновление данных пользователя.
+     * Валидирует входные данные, проверяет CSRF и права доступа.
+     */
     public function userUpdate($userId) {
         $userModel = new User();
 
@@ -136,6 +153,9 @@ class AdminController {
         }
     }
 
+    /**
+     * Отображает форму создания нового пользователя.
+     */
     public function showUserCreateForm () {
 
         $userModel = new User();
@@ -151,6 +171,10 @@ class AdminController {
 
     }
 
+    /**
+     * Обрабатывает создание нового пользователя.
+     * Валидирует данные и сохраняет в БД.
+     */
     public function userCreate() {
         $userModel = new User();
 
@@ -200,6 +224,10 @@ class AdminController {
         }
     }
 
+    /**
+     * Удаляет пользователя по ID.
+     * Запрещает удаление себя и суперпользователя (ID = 1).
+     */
     public function delete ($userId) {
         $userModel = new User();
 

@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Маршрутизатор приложения.
+ * Определяет, какой контроллер и метод вызвать в зависимости от URL и HTTP-метода.
+ * Защищает админские маршруты проверкой роли.
+ */
+
 use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\UserController;
