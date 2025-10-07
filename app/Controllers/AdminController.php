@@ -255,7 +255,7 @@ class AdminController {
         if ($user && $user['id'] != $currentUser['id'] && $user['id'] != 1) {
             if ($userModel->delete($userId)){
                 header('Location: /admin');
-                return;
+                exit;
             } else {
             $error = 'Ошибка при удалении пользователя. Попробуйте позже';
             require __DIR__ . '/../Views/admin/user.php';
