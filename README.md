@@ -35,7 +35,7 @@
 1. **Клонируйте репозиторий**
    ```bash
    git clone https://github.com/Araelka/MangoShop.git
-   cd MangoShop
+   cd MangoShop```
 
 2. **Настройте подключение к БД**
     Отредактируйте файл app/Config/DBConfig.php:
