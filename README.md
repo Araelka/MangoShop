@@ -40,22 +40,22 @@
 2. **Настройте подключение к БД**
     Отредактируйте файл app/Config/DBConfig.php:
 
-    - const DB_HOST = '127.0.0.1';
-    - const DB_PORT = '3306';
-    - const DB_NAME = 'mShop';
-    - const DB_USER = 'root';
-    - const DB_PASSWORD = '123456';
+    ```const DB_HOST = '127.0.0.1';
+    const DB_PORT = '3306';
+    const DB_NAME = 'mShop';
+    const DB_USER = 'root';
+    const DB_PASSWORD = '123456';```
 
 3. **Выполните миграции и заполните БД начальными данными**
-    - php database/migrations/migrate.php
-    - php database/seeds/seed.php
+    ```php database/migrations/migrate.php
+    php database/seeds/seed.php```
 
     После этого в базе данных будет создан:
     - Пользователь-админ: логин admin, пароль admin
     - Три роли: admin, editor, user
 
 4. **Запустите встроенный сервер PHP**
-    php -S localhost:8000 -t public/
+    ```php -S localhost:8000 -t public/```
 
 5. **Откройте в браузере**
     - Главная страница: http://localhost:8000
@@ -73,7 +73,7 @@
 
 ## Структура проекта
 
-MangoShop/
+```MangoShop/
 ├── app/
 │   ├── Controllers/    # AuthController, AdminController, UserController
 │   ├── Models/         # User, Auth, CsrfToken
@@ -83,4 +83,4 @@ MangoShop/
 │   ├── migrations/     # Создание таблиц roles и users
 │   └── seeds/          # Наполнение ролями и админом
 ├── public/             # Точка входа (index.php)
-└── vendor/             # Composer-зависимости (если используются)
+└── vendor/             # Composer-зависимости (если используются)```
