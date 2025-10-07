@@ -34,21 +34,21 @@
 
 1. **Клонируйте репозиторий**
    ```bash
-   git clone https://github.com/ваш-ник/MangoShop.git
+   git clone https://github.com/Araelka/MangoShop.git
    cd MangoShop
 
 2. **Настройте подключение к БД**
     Отредактируйте файл app/Config/DBConfig.php:
 
-    const DB_HOST = '127.0.0.1';
-    const DB_PORT = '3306';
-    const DB_NAME = 'mShop';
-    const DB_USER = 'root';
-    const DB_PASSWORD = '123456';
+    - const DB_HOST = '127.0.0.1';
+    - const DB_PORT = '3306';
+    - const DB_NAME = 'mShop';
+    - const DB_USER = 'root';
+    - const DB_PASSWORD = '123456';
 
 3. **Выполните миграции и заполните БД начальными данными**
-    php database/migrations/migrate.php
-    php database/seeds/seed.php
+    - php database/migrations/migrate.php
+    - php database/seeds/seed.php
 
     После этого в базе данных будет создан:
     - Пользователь-админ: логин admin, пароль admin
@@ -58,10 +58,10 @@
     php -S localhost:8000 -t public/
 
 5. **Откройте в браузере**
-    Главная страница: http://localhost:8000
-    Форма входа: http://localhost:8000/login
-    Регистрация: http://localhost:8000/register
-    Админ-панель: http://localhost:8000/admin (только для админов)
+    - Главная страница: http://localhost:8000
+    - Форма входа: http://localhost:8000/login
+    - Регистрация: http://localhost:8000/register
+    - Админ-панель: http://localhost:8000/admin (только для админов)
 
 ## Безопасность
 
