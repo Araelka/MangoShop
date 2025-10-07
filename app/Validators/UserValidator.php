@@ -120,7 +120,7 @@ class UserValidator {
                     $this->errors['email'] = 'Пользователь с таким логином уже существует';
                 }
             }
-        } elseif (!isset($userdata['email']) || empty($userdata['username'])) {
+        } elseif (!isset($userdata['email']) || empty($userdata['email'])) {
             $this->errors['email'] = "Поле 'Электронная почта' обязательно для заполнения";
         }
 

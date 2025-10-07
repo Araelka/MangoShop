@@ -181,8 +181,6 @@ class User {
             $values[] = $userdata['id'];
 
             $sqlQuery = "UPDATE users SET " . implode(', ', $fields) . " WHERE id = ?";
-            print_r($userdata);
-            print_r($sqlQuery);
             $sql = $this->pdo->prepare($sqlQuery);
             $sql->execute($values);
             return true;
